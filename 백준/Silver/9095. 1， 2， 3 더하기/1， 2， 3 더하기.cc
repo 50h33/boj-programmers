@@ -1,17 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
-int t, n;
-int go(int sum) {
-    if(sum == n) return 1;
-    if(sum > n) return 0;
-    return go(sum+1) + go(sum+2) + go(sum+3);
-}
+int t, n, dp[14];
 int main() {
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL); cout.tie(NULL);
-    cin >> t;
-	for (int i = 0; i < t; i++) {
-        cin >> n;
-        cout << go( 0) << "\n";
-    }
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr);
+  cin >> t;
+  dp[1] = 1; dp[2] = 2; dp[3] = 4;
+  for (int i = 4; i <= 10; i++) {
+    dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3];
+  }
+  while (t--) {
+    cin >> n;
+    cout << dp[n] << "\n";
+  }
 }
