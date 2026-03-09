@@ -1,19 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
-int t, h, w, n, first, second;
+
+int t, h, w, n;
+
 int main() {
-	ios_base::sync_with_stdio(false);
-	cin.tie(nullptr);
-	cin >> t;
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    cin >> t;
     while (t--) {
         cin >> h >> w >> n;
-        n -= 1;
 
-        first = n % h + 1;
-        second = n / h + 1;
+        int floor = (n - 1) % h + 1;
+        int room = (n - 1) / h + 1;
 
-        cout << first;
-        if (second < 10) cout << "0";
-        cout << second << "\n";
+        cout << floor;
+        if (room < 10) cout << 0;
+        cout << room << "\n";
     }
 }
