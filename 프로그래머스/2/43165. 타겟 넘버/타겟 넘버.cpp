@@ -2,17 +2,15 @@
 #include <vector>
 using namespace std;
 
-int go(vector<int> numbers, int target, int idx, int sum) {
-    if (idx == numbers.size()) {
-        return sum == target ? 1 : 0;
-    }
-    
-    return go(numbers, target, idx+1, sum+numbers[idx])
-        + go(numbers, target, idx+1, sum-numbers[idx]);
+int go(int idx, int sum, vector<int> numbers, int target) {
+    if (idx == numbers.size() && sum == target) return 1;
+    if (idx >= numbers.size()) return 0;
+    return go(idx+1, sum+numbers[idx], numbers, target)
+        + go(idx+1, sum-numbers[idx], numbers, target);
 }
 
 int solution(vector<int> numbers, int target) {
     int answer = 0;
-    answer += go(numbers, target, 0, 0);
+    answer = go(0, 0, numbers, target);
     return answer;
 }
