@@ -1,10 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
+unordered_map<string, int> mp;
 
 string solution(vector<string> participant, vector<string> completion) {
     string answer = "";
-    
-    unordered_map<string, int> mp;
     
     for (const string& s : participant) {
         mp[s]++;
@@ -16,8 +15,7 @@ string solution(vector<string> participant, vector<string> completion) {
     
     for (auto& pair : mp) {
         if (pair.second > 0) {
-            answer = pair.first;
-            break;
+            answer = pair.first; break;
         }
     }
     
